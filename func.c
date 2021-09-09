@@ -6,49 +6,45 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 17:01:09 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/02 18:12:30 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/09 17:34:00 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*create_element(int number)
+void	create_element(t_stack *new_element, int value,t_stack *prev, t_stack *next)
 {
-	t_stack *new_element;
-
-	new_element = malloc(sizeof(t_stack));
-	new_element->prev = new_element;
-	new_element->value = number;
-	new_element->aft = new_element;
-
-	return (new_element);
+	new_element->prev = prev;
+	new_element->value = value;
+	new_element->next = next;
 }
 
-void	append_number_to_stacks(t_stack *stacks, int number)
+void	append_int_to_stack(t_stack *choosen_stack, int num)
 {
-	t_stack *element;
-	t_stack	*first;
-	t_stack	*last;
+	t_stack *first;
+	t_stack new_element;
 
-	element = create_element(number);
-	if (stacks)
+	if (choosen_stack->next == NULL)
+		create_element(choosen_stack, num,choosen_stack, choosen_stack);
+	/*else
 	{
-		first = stacks;
-		last = stacks->prev;
-		last->aft = element;
-		element->prev = last;
-		element->aft = first;
-		first->prev = element;
-	}
-	else
-		stacks = element;
+		first = choosen_stack;
+		while (choosen_stack->next != first)
+			choosen_stack = choosen_stack->next;
+		int_elem.prev = choosen_stack;
+		int_elem.next = first;
+		first->prev = &int_elem;
+		choosen_stack->next = &int_elem;
+	}*/
 }
 
 int main()
 {
-	t_stack *elements=NULL;
+	t_stack element;
 
-	append_number_to_stacks(elements, 10);
-	append_number_to_stacks(elements, 25);
-	printf("%p", elements);
+	append_int_to_stack(&element, 10);
+	printf("%p\n", &element);
+	printf("%d\n", element.value);
+	printf("%p\n", element.prev);
+	printf("%p\n", element.next);
 }
