@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 02:20:15 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/24 18:06:32 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/24 18:20:54 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,28 +90,4 @@ void	free_my_stack(t_stack **my_stack)
 		free(current);
 	}
 	free(my_stack);
-}
-
-int main(int argc, char **argv)
-{
-	t_stack **stack_a;
-	t_stack **stack_b;
-	t_stack *element;
-
-	initialize_my_stack(&stack_a);
-	add_my_element_to_my_stack(stack_a, 10);
-	add_my_element_to_my_stack(stack_a, 20);
-	add_my_element_to_my_stack(stack_a, 30);
-	add_my_element_to_my_stack(stack_a, 40);
-	add_my_element_to_my_stack(stack_a, 50);
-	add_my_element_to_my_stack(stack_a, 60);
-	add_my_element_to_my_stack(stack_a, 70);
-	add_my_element_to_my_stack(stack_a, 80);
-	element = get_element_at_position(10, stack_a);
-	if (element != NULL)
-		printf(" %d \n", element->value);
-	swap_a(stack_a);
-	printf ("%d\n", (*stack_a)->value);
-	free_my_stack(stack_a);
-	return 0;
 }
