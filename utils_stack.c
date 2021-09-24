@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 02:20:15 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/24 18:20:54 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/24 19:34:20 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_stack	*get_last_of_my_stack(t_stack **my_stack)
 	elements = *my_stack;
 	if (elements)
 	{
-		while (elements->next != NULL)
+		while (elements->next != NULL && elements->next != *my_stack)
 			elements = elements->next;
 		return (elements);
 	}
@@ -51,6 +51,7 @@ t_stack	*get_last_of_my_stack(t_stack **my_stack)
 
 int	add_my_element_to_my_stack(t_stack **my_stack, int num)
 {
+	t_stack	*first_element;
 	t_stack	*last_element;
 	t_stack *my_element;
 
@@ -62,10 +63,13 @@ int	add_my_element_to_my_stack(t_stack **my_stack, int num)
 	}
 	else
 	{
+		first_element = get_element_at_position(1, my_stack);
 		last_element = get_last_of_my_stack(my_stack);
-		if (create_element(num, &my_element,last_element, NULL) == -1)
+		if (create_element(num, &my_element,last_element, first_element) == -1)
 			return (-1);
+		first_element->prev = my_element;
 		last_element->next = my_element;
+
 	}
 	return (1);
 }
@@ -79,14 +83,14 @@ void	free_my_stack(t_stack **my_stack)
 	{
 		current = get_last_of_my_stack(my_stack);
 		prev_element = current->prev;
-		while (prev_element != NULL)
+		while (prev_element != NULL && current != *my_stack)
 		{
-			//printf(" %d ", current->value);
+			printf(" free:%d ", current->value);
 			free(current);
 			current = prev_element;
 			prev_element = current->prev;
 		}
-		//printf(" %d ", current->value);
+		printf(" freee:%d ", current->value);
 		free(current);
 	}
 	free(my_stack);

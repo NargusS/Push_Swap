@@ -20,4 +20,5 @@ int	add_my_element_to_my_stack(t_stack **my_stack, int num);
 void	free_my_stack(t_stack **my_stack);
 
 void	swap_a(t_stack **stack_a);
+void	rotate_a(t_stack **stack_a);
 #endif

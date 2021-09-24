@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:32:57 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/24 17:51:20 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/24 19:43:52 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_stack	*get_element_at_position(int position, t_stack **my_stack)
 	if (elements)
 	{
 		count++;
-		while (elements->next != NULL && count < position)
+		while ((elements->next != NULL && elements->next != *my_stack) && count < position)
 		{
 			elements = elements->next;
 			count++;
