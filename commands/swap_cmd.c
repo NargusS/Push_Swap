@@ -6,50 +6,48 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:29:28 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/24 19:51:49 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:53:16 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 void	swap_a(t_stack **stack_a)
 {
 	t_stack *new_first;
-	t_stack *new_second;
-	t_stack *third;
-	t_stack	*last;
+	t_stack	*new_second;
+	t_stack	*third;
 
-	if ((*stack_a) && (*stack_a)->next != NULL)
+	if ((*stack_a) && (*stack_a)->next != (*stack_a))
 	{
-		new_first = get_element_at_position(2, stack_a);
-		third = get_element_at_position(3, stack_a);
-		last = get_last_of_my_stack(stack_a);
-		*stack_a = new_first;
-		new_second = new_first->prev;
-		modify_element(&new_first, NULL, new_second);
+		new_first = (*stack_a)->next;
+		new_second = (*stack_a);
+		third = (*stack_a)->next->next;
+		modify_element(&new_first, new_second->prev, new_second);
+		modify_element(&third, new_second, third->next);
+		modify_element(&(new_second->prev), new_second->prev->prev, new_first);
 		modify_element(&new_second, new_first, third);
-		modify_element(&last, last->prev, new_first);
+		*stack_a = new_first;
 		//write(1,"sa\n",3);
 	}
 }
 
-void    swap_b(t_stack **stack_b)
+void	swap_b(t_stack **stack_b)
 {
 	t_stack *new_first;
-	t_stack *new_second;
-	t_stack *third;
-	t_stack	*last;
+	t_stack	*new_second;
+	t_stack	*third;
 
-	if ((*stack_b) && (*stack_b)->next != NULL)
+	if ((*stack_b) && (*stack_b)->next != (*stack_b))
 	{
-		new_first = get_element_at_position(2, stack_b);
-		third = get_element_at_position(3, stack_b);
-		last = get_last_of_my_stack(stack_b);
-		*stack_b = new_first;
-		new_second = new_first->prev;
-		modify_element(&new_first, NULL, new_second);
+		new_first = (*stack_b)->next;
+		new_second = (*stack_b);
+		third = (*stack_b)->next->next;
+		modify_element(&new_first, new_second->prev, new_second);
+		modify_element(&third, new_second, third->next);
+		modify_element(&(new_second->prev), new_second->prev->prev, new_first);
 		modify_element(&new_second, new_first, third);
-		modify_element(&last, last->prev, new_first);
-		//write(1,"sb\n",3);
+		*stack_b = new_first;
+		//write(1,"sa\n",3);
 	}
 }
