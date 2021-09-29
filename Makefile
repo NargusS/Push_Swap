@@ -3,7 +3,7 @@ NAME = push_swap
 SRCS =  main.c\
 	commands/utils_stack.c\
 	commands/swap_cmd.c\
-	commands/utils_stack_2.c\
+	commands/get_element_utils.c\
 	commands/rotate_cmd.c\
 	commands/rev_rotate_cmd.c\
 	commands/push_cmd.c

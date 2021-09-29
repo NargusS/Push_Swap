@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 18:13:39 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/28 19:36:33 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/29 16:54:15 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *new_elem;
+	t_stack	*new_elem;
 
 	if (*stack_b)
 	{
@@ -32,16 +32,17 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 		else
 		{
 			modify_element(&new_elem, (*stack_a)->prev,*stack_a);
-			modify_element(&((*stack_a)->prev), (*stack_a)->prev->prev,new_elem);
+			modify_element(&((*stack_a)->prev), (*stack_a)->prev->prev, new_elem);
 			modify_element(stack_a, new_elem, (*stack_a)->next);
 		}
 		*stack_a = new_elem;
+		write(1, "pa\n", 3);
 	}
 }
 
 void	push_b(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *new_elem;
+	t_stack	*new_elem;
 
 	if (*stack_a)
 	{
@@ -59,9 +60,10 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 		else
 		{
 			modify_element(&new_elem, (*stack_b)->prev,*stack_b);
-			modify_element(&((*stack_b)->prev), (*stack_b)->prev->prev,new_elem);
+			modify_element(&((*stack_b)->prev), (*stack_b)->prev->prev, new_elem);
 			modify_element(stack_b, new_elem, (*stack_b)->next);
 		}
 		*stack_b = new_elem;
+		write(1, "pb\n", 3);
 	}
 }
