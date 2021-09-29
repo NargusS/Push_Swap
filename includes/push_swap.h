@@ -12,11 +12,13 @@ typedef struct	s_stack
 }				t_stack;
 
 int	create_element(int num, t_stack **my_element,t_stack *prev, t_stack *next);
+int	add_my_element_to_my_stack(t_stack **my_stack, int num);
 void	modify_element(t_stack **my_element,t_stack *prev, t_stack *next);
+void	free_my_stack(t_stack **my_stack);
+
+int	get_size_of_my_stack(t_stack *my_stack);
 t_stack	*get_element_at_position(int position, t_stack *my_stack);
 t_stack	*get_last_of_my_stack(t_stack *my_stack);
-int	add_my_element_to_my_stack(t_stack **my_stack, int num);
-void	free_my_stack(t_stack **my_stack);
 
 void	swap_a(t_stack **stack_a);
 void	swap_b(t_stack **stack_b);

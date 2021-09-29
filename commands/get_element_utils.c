@@ -6,11 +6,29 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:32:57 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/29 16:55:11 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/29 18:01:57 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	get_size_of_my_stack(t_stack *my_stack)
+{
+	t_stack	*first_element;
+	int		i;
+
+	if (my_stack)
+	{
+		i = 1;
+		first_element = my_stack;
+		while (my_stack && my_stack->next != first_element)
+		{
+			my_stack = my_stack->next;
+			i++;
+		}
+	}
+	return (i);
+}
 
 t_stack	*get_element_at_position(int position, t_stack *my_stack)
 {

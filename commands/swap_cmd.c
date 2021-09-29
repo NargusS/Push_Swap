@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:29:28 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/29 16:45:07 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:59:23 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ static void	swap_my_stack(t_stack **my_stack)
 	t_stack	*third;
 
 	new_first = (*my_stack)->next;
-	new_second = (*my_stack);
-	third = (*my_stack)->next->next;
-	modify_element(&new_first, new_second->prev, new_second);
-	modify_element(&third, new_second, third->next);
-	modify_element(&(new_second->prev), new_second->prev->prev, new_first);
-	modify_element(&new_second, new_first, third);
+	if (get_size_of_my_stack(*my_stack) > 2)
+	{
+		new_second = (*my_stack);
+		third = (*my_stack)->next->next;
+		modify_element(&new_first, new_second->prev, new_second);
+		modify_element(&third, new_second, NULL);
+		modify_element(&(new_second->prev), NULL, new_first);
+		modify_element(&new_second, new_first, third);
+	}
 	*my_stack = new_first;
 }
 

@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 18:13:39 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/29 16:54:15 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:01:45 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 		new_elem = *stack_b;
 		if ((*stack_b)->next != *stack_b)
 		{		
-			modify_element(&((*stack_b)->next), (*stack_b)->prev, (*stack_b)->next->next);
-			modify_element(&((*stack_b)->prev), (*stack_b)->prev->prev, (*stack_b)->next);
+			modify_element(&((*stack_b)->next), (*stack_b)->prev, NULL);
+			modify_element(&((*stack_b)->prev), NULL, (*stack_b)->next);
 			*stack_b = (*stack_b)->next;
 		}
 		else
@@ -32,8 +32,8 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 		else
 		{
 			modify_element(&new_elem, (*stack_a)->prev,*stack_a);
-			modify_element(&((*stack_a)->prev), (*stack_a)->prev->prev, new_elem);
-			modify_element(stack_a, new_elem, (*stack_a)->next);
+			modify_element(&((*stack_a)->prev), NULL, new_elem);
+			modify_element(stack_a, new_elem, NULL);
 		}
 		*stack_a = new_elem;
 		write(1, "pa\n", 3);
@@ -49,8 +49,8 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 		new_elem = *stack_a;
 		if ((*stack_a)->next != *stack_a)
 		{		
-			modify_element(&((*stack_a)->next), (*stack_a)->prev, (*stack_a)->next->next);
-			modify_element(&((*stack_a)->prev), (*stack_a)->prev->prev, (*stack_a)->next);
+			modify_element(&((*stack_a)->next), (*stack_a)->prev, NULL);
+			modify_element(&((*stack_a)->prev), NULL, (*stack_a)->next);
 			*stack_a = (*stack_a)->next;
 		}
 		else
@@ -60,8 +60,8 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 		else
 		{
 			modify_element(&new_elem, (*stack_b)->prev,*stack_b);
-			modify_element(&((*stack_b)->prev), (*stack_b)->prev->prev, new_elem);
-			modify_element(stack_b, new_elem, (*stack_b)->next);
+			modify_element(&((*stack_b)->prev), NULL, new_elem);
+			modify_element(stack_b, new_elem, NULL);
 		}
 		*stack_b = new_elem;
 		write(1, "pb\n", 3);

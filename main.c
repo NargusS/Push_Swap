@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:26:03 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/29 16:42:41 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/29 18:06:22 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int main(int argc, char **argv)
 	t_stack *stack_a;
 	t_stack *stack_b;
 
-	// add_my_element_to_my_stack(&stack_a, 10);
-	// add_my_element_to_my_stack(&stack_a, 20);
-	// add_my_element_to_my_stack(&stack_a, 30);
+	//  add_my_element_to_my_stack(&stack_a, 10);
+	//  add_my_element_to_my_stack(&stack_a, 20);
+	//  add_my_element_to_my_stack(&stack_a, 30);
 	// add_my_element_to_my_stack(&stack_a, 40);
 	// add_my_element_to_my_stack(&stack_a, 50);
 	// add_my_element_to_my_stack(&stack_a, 60);
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 	// add_my_element_to_my_stack(&stack_a, 80);
 	// add_my_element_to_my_stack(&stack_b, 90);
 	// add_my_element_to_my_stack(&stack_b, 100);
-	// add_my_element_to_my_stack(&stack_b, 110);
+	//  add_my_element_to_my_stack(&stack_b, 110);
 	// add_my_element_to_my_stack(&stack_b, 120);
 	// add_my_element_to_my_stack(&stack_b, 130);
 	// add_my_element_to_my_stack(&stack_b, 140);
