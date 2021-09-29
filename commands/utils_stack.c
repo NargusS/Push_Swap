@@ -6,29 +6,29 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 02:20:15 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/29 17:01:11 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/09/29 18:20:04 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	create_element(int num, t_stack **my_element, t_stack *prev, t_stack *next)
+int	new_element(int num, t_stack **element, t_stack *prev, t_stack *next)
 {
-	*my_element = malloc(sizeof(t_stack));
-	if (*my_element == NULL)
+	*element = malloc(sizeof(t_stack));
+	if (*element == NULL)
 		return (-1);
-	(*my_element)->value = num;
-	(*my_element)->prev = prev;
-	(*my_element)->next = next;
+	(*element)->value = num;
+	(*element)->prev = prev;
+	(*element)->next = next;
 	return (1);
 }
 
-void	modify_element(t_stack **my_element, t_stack *prev, t_stack *next)
+void	modify_element(t_stack **element, t_stack *prev, t_stack *next)
 {
 	if (prev)
-		(*my_element)->prev = prev;
+		(*element)->prev = prev;
 	if (next)
-		(*my_element)->next = next;
+		(*element)->next = next;
 }
 
 int	add_my_element_to_my_stack(t_stack **my_stack, int num)
@@ -39,7 +39,7 @@ int	add_my_element_to_my_stack(t_stack **my_stack, int num)
 
 	if (*my_stack == NULL)
 	{
-		if (create_element(num, &my_element, NULL, NULL) == -1)
+		if (new_element(num, &my_element, NULL, NULL) == -1)
 			return (-1);
 		modify_element(&my_element, my_element, my_element);
 		*my_stack = my_element;
@@ -48,7 +48,7 @@ int	add_my_element_to_my_stack(t_stack **my_stack, int num)
 	{
 		first_element = get_element_at_position(1, *my_stack);
 		last_element = get_last_of_my_stack(*my_stack);
-		if (create_element(num, &my_element, last_element, first_element) == -1)
+		if (new_element(num, &my_element, last_element, first_element) == -1)
 			return (-1);
 		first_element->prev = my_element;
 		last_element->next = my_element;
