@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:32:57 by achane-l          #+#    #+#             */
-/*   Updated: 2021/09/29 18:01:57 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/10/04 20:18:24 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	get_size_of_my_stack(t_stack *my_stack)
 	t_stack	*first_element;
 	int		i;
 
+	i = 0;
 	if (my_stack)
 	{
 		i = 1;

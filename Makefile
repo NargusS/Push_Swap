@@ -6,7 +6,11 @@ SRCS =  main.c\
 	commands/get_element_utils.c\
 	commands/rotate_cmd.c\
 	commands/rev_rotate_cmd.c\
-	commands/push_cmd.c
+	commands/push_cmd.c\
+	get_arg.c\
+	errors.c\
+	algorithm/algo.c\
+	algorithm/get_chunk.c
 INCLUDES = includes/push_swap.h
 
 OBJS	= ${SRCS:.c=.o}
