@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:32:57 by achane-l          #+#    #+#             */
-/*   Updated: 2021/10/04 20:18:24 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/10/08 19:12:12 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,22 @@ t_stack	*get_last_of_my_stack(t_stack *my_stack)
 		return (my_stack);
 	}
 	return (NULL);
+}
+
+int	is_min_of_my_stack(t_stack *my_stack)
+{
+	int i;
+	int size;
+	t_stack *first;
+
+	i = 0;
+	first = my_stack;
+	size = get_size_of_my_stack(my_stack);
+	while (i++ < size)
+	{
+		my_stack = my_stack->next;
+		if (first->value > my_stack->value)
+			return(-1);
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 18:10:30 by achane-l          #+#    #+#             */
-/*   Updated: 2021/10/05 19:26:52 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/10/12 19:59:04 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef	struct	s_chunk
 	struct	s_chunk	*next;
 }				t_chunk;
 
+typedef struct	s_data
+{
+	t_stack *stack_a;
+	t_stack	*stack_b;
+	int		size_stack_a;
+	int		size_stack_b;
+}				t_data;
 int		new_element(int num, t_stack **element, t_stack *prev, t_stack *next);
 int		add_my_element_to_my_stack(t_stack **my_stack, int num);
 void	modify_element(t_stack **element, t_stack *prev, t_stack *next);
@@ -39,6 +46,7 @@ void	free_my_stack(t_stack **my_stack);
 int		get_size_of_my_stack(t_stack *my_stack);
 t_stack	*get_element_at_position(int position, t_stack *my_stack);
 t_stack	*get_last_of_my_stack(t_stack *my_stack);
+int	is_min_of_my_stack(t_stack *my_stack);
 
 void	swap_a(t_stack **stack_a);
 void	swap_b(t_stack **stack_b);
@@ -63,11 +71,19 @@ int		atoi_and_add(t_stack **stack_a, char *arg);
 //test
 
 int	get_good_position(t_stack *stack_to_place, t_stack *elements);
+int	get_good_position_2(t_stack *stack_to_place, t_stack *elements);
 void	push_in_good_place(t_stack **stack_a, t_stack **stack_b);
 void	sort_test(t_stack **stack_a, t_stack **stack_b,t_chunk *chunks);
 int		is_in_chunk(t_stack *element, t_chunk *chunk);
 void	chunks_func(t_stack *stack_a, t_chunk **chunks);
 void	add_chunk_to_chunks(t_chunk **chunks, t_stack *first_elem, t_stack *last_elem);
 t_chunk	*create_chunk(t_stack *first_elem, t_stack *last_elem);
+int		stack_a_is_sorted(t_stack *stack_a);
 int		stack_b_is_sorted(t_stack *stack_b);
+void	print_stack(t_stack *my_stack_1, t_stack *my_stack_2);
+void	sort_in_my_stack(t_stack **my_stack);
+void	sort_in_stacks(t_stack	**stack_a, t_stack **stack_b);
+void	sort_test_2(t_stack **stack_a, t_stack **stack_b);
+int	count_move_to_place_in_a(t_stack *stack_a, t_stack	*stack_b, t_stack *element);
+t_stack	*check_best_moves(t_stack *stack_a, t_stack	*stack_b);
 #endif

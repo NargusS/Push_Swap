@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:26:03 by achane-l          #+#    #+#             */
-/*   Updated: 2021/10/05 18:31:10 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/10/12 20:13:35 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,27 @@ void	print_stack(t_stack *my_stack_1, t_stack *my_stack_2)
 	}
 }
 
+int		stack_a_is_sorted(t_stack *stack_a)
+{
+	t_stack *first;
+
+	first = stack_a;
+
+	if (stack_a && stack_a->next != stack_a)
+	{
+		while (stack_a->next != first)
+		{
+			if (stack_a->next->value < stack_a->value)
+			{
+				return (-1);
+			}
+			stack_a = stack_a->next;
+		}
+		return (1);
+	}
+	return (0);
+}
+
 int		stack_b_is_sorted(t_stack *stack_b)
 {
 	t_stack *first;
@@ -110,7 +131,6 @@ int		stack_b_is_sorted(t_stack *stack_b)
 		{
 			if (stack_b->next->value > stack_b->value)
 			{
-				print_stack(NULL,stack_b);
 				return (-1);
 			}
 			stack_b = stack_b->next;
@@ -124,15 +144,18 @@ int		stack_b_is_sorted(t_stack *stack_b)
 
 int main(int argc, char **argv)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	// t_stack *stack_a;
+	// t_stack *stack_b;
 	t_chunk	*chunks;
+	t_data	data_stacks;
 	
-	get_arg_add_to_stack_a(&stack_a, argc, argv);
+	get_arg_add_to_stack_a(&data_stacks.stack_a, argc, argv);
 	//print_stack(stack_a, stack_b);
-	chunks_func(stack_a, &chunks);
-	sort_test(&stack_a, &stack_b, chunks);
-	//print_stack(stack_a, stack_b);
-	//free_my_stack(&stack_a);
+	//chunks_func(data_stacks.stack_a, &chunks);
+	//sort_in_my_stack(&data_stacks.stack_a);
+	//sort_test(&data_stacks.stack_a, &data_stacks.stack_b, chunks);
+	sort_test_2(&data_stacks.stack_a, &data_stacks.stack_b);
+	//print_stack(data_stacks.stack_a, data_stacks.stack_b);
+	//free_my_stack(&data_stacks.stack_a);
 	return 0;
 }
