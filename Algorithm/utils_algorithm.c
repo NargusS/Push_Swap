@@ -12,24 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-int	stack_is_sort(t_stack *my_stack, int size_of_stack)
-{
-	int	i;
-
-	if (size_of_stack > 0)
-	{
-		i = 1;
-		while (i++ < size_of_stack)
-		{
-			if (my_stack->value > my_stack->next->value)
-				return (-1);
-			my_stack = my_stack->next;
-		}
-		return (1);
-	}
-	return (0);
-}
-
 static int	count_moves_for_elem(t_data stacks, t_stack *element)
 {
 	int	pos;
@@ -72,4 +54,22 @@ t_stack	*get_best_move(t_data stacks)
 		new_elem = new_elem->next;
 	}
 	return (best_move_elem);
+}
+
+int	stack_is_sort(t_stack *my_stack, int size_st)
+{
+	int	i;
+
+	if (size_st > 0)
+	{
+		i = 1;
+		while (i++ < size_st)
+		{
+			if (my_stack->value > my_stack->next->value)
+				return (-1);
+			my_stack = my_stack->next;
+		}
+		return (1);
+	}
+	return (0);
 }

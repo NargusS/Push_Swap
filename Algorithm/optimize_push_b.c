@@ -34,7 +34,7 @@ static int	result_greather_less(t_stack *element, int size_of_stack)
 	return (result);
 }
 
-t_stack	*get_median(t_stack *my_stack, int size_of_stack)
+t_stack	*get_median(t_stack *my_stack, int size_st)
 {
 	t_stack	*median;
 	int		result_med;
@@ -42,12 +42,12 @@ t_stack	*get_median(t_stack *my_stack, int size_of_stack)
 	int		median_value;
 
 	i = 2;
-	median_value = result_greather_less(my_stack, size_of_stack);
+	median_value = result_greather_less(my_stack, size_st);
 	median = my_stack;
 	my_stack = my_stack->next;
-	while (i <= size_of_stack)
+	while (i <= size_st)
 	{
-		result_med = result_greather_less(my_stack, size_of_stack);
+		result_med = result_greather_less(my_stack, size_st);
 		if (median_value == 0)
 			return (median);
 		else if (result_med == 0 || result_med == 1 || result_med == -1)

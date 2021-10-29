@@ -12,23 +12,23 @@
 
 #include "../includes/push_swap.h"
 
-int	new_element(int num, t_stack **element, t_stack *prev, t_stack *next)
+int	new_element(int num, t_stack **elem, t_stack *prev, t_stack *next)
 {
-	*element = malloc(sizeof(t_stack));
-	if (*element == NULL)
+	*elem = malloc(sizeof(t_stack));
+	if (*elem == NULL)
 		return (-1);
-	(*element)->value = num;
-	(*element)->prev = prev;
-	(*element)->next = next;
+	(*elem)->value = num;
+	(*elem)->prev = prev;
+	(*elem)->next = next;
 	return (1);
 }
 
-void	modify_element(t_stack **element, t_stack *prev, t_stack *next)
+void	modify_element(t_stack **elem, t_stack *prev, t_stack *next)
 {
 	if (prev)
-		(*element)->prev = prev;
+		(*elem)->prev = prev;
 	if (next)
-		(*element)->next = next;
+		(*elem)->next = next;
 }
 
 int	add_my_element_to_my_stack(t_data *stacks, int num)
@@ -68,12 +68,10 @@ void	free_my_stack(t_stack **my_stack)
 		prev_element = current->prev;
 		while (prev_element != NULL && current != *my_stack)
 		{
-			printf("elem : %d\n", current->value);
 			free(current);
 			current = prev_element;
 			prev_element = current->prev;
 		}
-		printf("elem : %d\n", current->value);
 		free(current);
 	}
 }

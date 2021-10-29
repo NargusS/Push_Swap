@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	already_exist(t_stack *my_stack)
 {
-	t_stack *last;
+	t_stack	*last;
 
 	if (my_stack)
 	{
@@ -35,14 +35,13 @@ void	check_error_with_and_without_message(t_data *stacks, char *arg)
 	int	check_param;
 
 	check_param = atoi_and_add(stacks, arg);
-	if (check_param == -1|| already_exist(stacks->stack_a) == -1)
+	if (check_param == -1 || already_exist(stacks->stack_a) == -1)
 	{
-		write(1, "ERROR\n", 6);
+		write(1, "Error\n", 6);
 		if (stacks->stack_a)
 			free_my_stack(&stacks->stack_a);
 		exit(EXIT_FAILURE);
 	}
 	else if (check_param == 0)
 		exit(EXIT_FAILURE);
-
 }
