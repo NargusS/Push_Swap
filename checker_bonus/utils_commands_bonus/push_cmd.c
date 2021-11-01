@@ -6,11 +6,17 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 00:05:31 by achane-l          #+#    #+#             */
-/*   Updated: 2021/10/29 19:55:58 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/11/01 17:04:52 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker.h"
+
+static void	modify_size_stack(int *size_stack_source, int *size_stack_dest)
+{
+	*size_stack_dest += 1;
+	*size_stack_source -= 1;
+}
 
 void	push_a(t_stack **stack_a, t_stack **stack_b, t_data *stacks)
 {
@@ -36,6 +42,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b, t_data *stacks)
 			modify_element(stack_a, new_elem, NULL);
 		}
 		*stack_a = new_elem;
+		modify_size_stack(&stacks->size_stack_b, &stacks->size_stack_a);
 	}
 }
 
@@ -63,5 +70,6 @@ void	push_b(t_stack **stack_a, t_stack **stack_b, t_data *stacks)
 			modify_element(stack_b, new_elem, NULL);
 		}
 		*stack_b = new_elem;
+		modify_size_stack(&stacks->size_stack_a, &stacks->size_stack_b);
 	}
 }

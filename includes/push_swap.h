@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:41:38 by achane-l          #+#    #+#             */
-/*   Updated: 2021/10/27 18:58:19 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/11/01 18:42:52 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 # define PRINT_CMD 1
 # define NO_PRINT_CMD 0
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -47,7 +46,6 @@ int			get_pos_to_place(t_stack *my_stack, t_stack *elem, int size_st);
 t_stack		*get_min_of_my_stack(t_stack *my_stack, int size_st);
 t_stack		*get_max_of_my_stack(t_stack *my_stack, int size_st);
 
-
 void		insertion_sort(t_data *stacks, t_stack *best_elem);
 void		sort_hundreds_num(t_data *stacks);
 
@@ -60,7 +58,7 @@ int			stack_is_sort(t_stack *my_stack, int size_st);
 void		sort_small_stacks(t_data *stacks);
 
 void		swap_a(t_stack *stack_a, int check_print);
-void		swap_b(t_stack *stack_a, int check_print);
+void		swap_b(t_stack *stack_b, int check_print);
 void		swap_s(t_data *stacks);
 void		rotate_a(t_stack **stack_a, int check_print);
 void		rotate_b(t_stack **stack_b, int check_print);

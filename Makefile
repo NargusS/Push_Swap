@@ -19,6 +19,7 @@ SRCS =	src/push_swap.c\
 SRCS_B =	checker_bonus/checker.c\
 			checker_bonus/src_bonus/errors_bonus.c\
 			checker_bonus/src_bonus/get_arg_bonus.c\
+			checker_bonus/src_bonus/func_utils.c\
 			checker_bonus/utils_commands_bonus/linked_list_utils.c\
 			checker_bonus/utils_commands_bonus/swap_cmd.c\
 			checker_bonus/utils_commands_bonus/rotate_cmd.c\

@@ -6,22 +6,12 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 19:05:13 by achane-l          #+#    #+#             */
-/*   Updated: 2021/10/29 21:06:03 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/11/01 18:06:17 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include <stdio.h>
-
-static int	ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str && str[i])
-		i++;
-	return (i);
-}
 
 static void	initialize_all(t_data *stacks)
 {
@@ -31,63 +21,53 @@ static void	initialize_all(t_data *stacks)
 	stacks->stack_b = NULL;
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+static int	stack_is_sort(t_stack *my_stack, int size_st)
 {
-	char	*str2;
-	size_t	i;
-	size_t	j;
-	int		len;
+	int	i;
 
-	i = 0;
-	j = 0;
-	len = ft_strlen(s1) + ft_strlen(s2);
-	str2 = malloc(len + 1);
-	if (!str2)
-		return (NULL);
-	while (s1 && s1[i])
+	if (size_st > 0)
 	{
-		str2[i] = s1[i];
-		i++;
-	}
-	while (s2 && s2[j])
-	{
-		str2[i + j] = s2[j];
-		j++;
-	}
-	str2[len] = '\0';
-	return (str2);
-}
-
-void read_input(t_data *stacks)
-{
-	int res;
-	char *line;
-	char buffer[2];
-
-	res = 1;
-	line = NULL;
-	while (res > 0)
-	{
-		res = read(1, buffer, 1);
-		buffer[res] = 0;
-		if (res == 0)
-			return;
-		else if (buffer[0] != '\n')
-			line = ft_strjoin(line, buffer);
-		else
+		i = 1;
+		while (i++ < size_st)
 		{
-			//do_cmd(t_data *stacks, char **str)
-			free(line);
-			line = NULL;
+			if (my_stack->value > my_stack->next->value)
+				return (-1);
+			my_stack = my_stack->next;
 		}
+		return (1);
 	}
+	return (0);
 }
 
-int main(int argc, char **argv)
+void	exit_and_free(t_data *stacks, char **cmd)
 {
-	t_data stacks;
+	if (*cmd)
+		free(*cmd);
+	free_my_stack(&stacks->stack_a);
+	free_my_stack(&stacks->stack_b);
+	write(1, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
+int	main(int argc, char **argv)
+{
+	t_data	stacks;
 
 	initialize_all(&stacks);
 	get_arg_add(&stacks, argc, argv);
-	do_cmd(&stacks);
+	read_input(&stacks);
+	if (stack_is_sort(stacks.stack_a, stacks.size_stack_a) == 1 && \
+	stacks.stack_b == NULL)
+	{
+		write(1, "OK\n", 3);
+		free_my_stack(&stacks.stack_a);
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		write(1, "KO\n", 3);
+		free_my_stack(&stacks.stack_a);
+		free_my_stack(&stacks.stack_b);
+		exit(EXIT_FAILURE);
+	}
 }

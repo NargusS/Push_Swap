@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 18:23:16 by achane-l          #+#    #+#             */
-/*   Updated: 2021/10/27 19:30:40 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/10/29 19:31:26 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	get_arg_add_to_stack_a(t_data *stacks, int argc, char **argv)
 {
-	t_stack	**stack_a;
 	int		i;
 
 	i = 1;

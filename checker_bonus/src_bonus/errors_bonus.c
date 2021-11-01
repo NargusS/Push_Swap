@@ -6,7 +6,7 @@
 /*   By: achane-l <achane-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:42:38 by achane-l          #+#    #+#             */
-/*   Updated: 2021/10/29 19:55:36 by achane-l         ###   ########.fr       */
+/*   Updated: 2021/11/01 18:23:30 by achane-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	check_error(t_data *stacks, char *arg)
 	int	check_param;
 
 	check_param = atoi_and_add(stacks, arg);
-	if (check_param == -1 || already_exist(stacks->stack_a) == -1)
+	if (check_param == -1 || already_exist(stacks->stack_a) == -1 || \
+	ft_strlen(arg) > 10)
 	{
 		write(1, "Error\n", 6);
 		if (stacks->stack_a)
